@@ -1,0 +1,56 @@
+*{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.login_container{
+  /* background-color: aqua; */
+  height: 80vh;
+  width: 40vw;
+  margin: 3% 12%;
+}
+.heading_img{
+  color: #008542;
+  font-weight: bold;
+}
+.login_container h2{
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 12%;
+}
+.loginform{
+  margin-top: 3%;
+}
+.email{
+  margin-bottom: 15px;
+}
+.loginform input{
+  padding: 8px;
+  font-size: 15px;
+  height: 40px;
+  width: 60%;
+  border: 1px solid rgb(209, 196, 196);
+  border-radius: 5px;
+}
+.Loginbtn{
+  background-color: #008542;
+  height: 40px;
+  width: 60%;
+  margin-top: 25px;
+  text-align: center;
+}
+.Loginbtn input{
+  border: none;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.no_acc{
+  margin-top: 10px;
+  font-size:small;
+  text-align: center;
+}
+.no_acc input{
+  border: none;
+  text-align: start;
+  color: blue;
+}

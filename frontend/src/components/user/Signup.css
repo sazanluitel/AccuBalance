@@ -1,0 +1,49 @@
+.signup_container {
+  height: 80vh;
+  width: 40vw;
+  margin: 3% 12%;
+}
+.signup_container h2 {
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 3%;
+}
+
+.signup_container input {
+  padding: 8px;
+  font-size: 15px;
+  height: 40px;
+  width: 60%;
+  border: 1px solid rgb(209, 196, 196);
+  border-radius: 5px;
+}
+.name,
+.email,
+.password,
+.confirm_password {
+  margin-top: 10px;
+}
+
+.signup {
+  background-color: #008542;
+  height: 40px;
+  width: 60%;
+  margin-top: 25px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+.signup input{
+  border: none;
+}
+
+.already_acc {
+  font-size: small;
+  text-align: center;
+}
+
+.already_acc input {
+  border: none;
+  text-align: start;
+  color: blue;
+}
