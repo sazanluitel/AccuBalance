@@ -11,7 +11,7 @@ const Login = ({ onSignupClick }) => {
     <>
       <div className="login_container">
         <div className="heading_img">
-          <img src={Headingimg} alt="Image" />
+          <img src={Headingimg} alt="" />
           <h1>Accubalance</h1>
         </div>
         <h2>Login</h2>

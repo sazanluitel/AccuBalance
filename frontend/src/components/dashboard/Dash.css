@@ -1,0 +1,16 @@
+.dash-container {
+    display: flex;
+    height: 100vh; /* Set height of container to cover entire viewport */
+  }
+  
+  .sidebar-container {
+    flex: 0 0 auto; /* Sidebar does not grow or shrink */
+  }
+  
+  .navbar-container {
+    flex: 1; /* Navbar takes up remaining space */
+    overflow: hidden; /* Hide any overflowing content */
+  }
+  
+  /* Add styling for Sidebar and Navbar components as needed */
+  

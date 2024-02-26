@@ -2,15 +2,19 @@ import React from "react";
 import Headingimg from "../../assets/images/heading_img.png";
 import "./Signup.css";
 
-const Signup = ({ onLoginClick }) => {
+const Signup = ({ onLoginClick, onSignupFormSubmit }) => {
   const handleLoginClick = () => {
     onLoginClick();
+  };
+
+  const handleSignupClick = () => {
+    onSignupFormSubmit();
   };
 
   return (
     <div className="signup_container">
       <div className="heading_img">
-        <img src={Headingimg} alt="Image" />
+        <img src={Headingimg} alt="" />
         <h1>Accubalance</h1>
       </div>
       <h2>Signup</h2>
@@ -33,7 +37,7 @@ const Signup = ({ onLoginClick }) => {
           <input type="password" placeholder="Enter your password" />
         </div>
         <div className="signup">
-          <input type="button" value="Signup" />
+          <input type="button" value="Signup" onClick={handleSignupClick} />
         </div>
         <div className="already_acc">
           <span>Already have account ?</span>

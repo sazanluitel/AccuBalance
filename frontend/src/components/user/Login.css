@@ -2,7 +2,6 @@
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .login_container{
-  /* background-color: aqua; */
   height: 80vh;
   width: 40vw;
   margin: 3% 12%;
@@ -14,7 +13,7 @@
 .login_container h2{
   font-weight: bold;
   font-size: 30px;
-  margin-top: 12%;
+  margin-top: 3%;
 }
 .loginform{
   margin-top: 3%;

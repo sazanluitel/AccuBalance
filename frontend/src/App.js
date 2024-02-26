@@ -6,7 +6,6 @@ import Stocks from "./components/stocks/Stocks";
 import Sales from "./components/sales/Sales";
 import Reports from "./components/reports/Reports";
 import Purchase from "./components/purchase/Purchase";
-import Company from "./components/company/Company";
 import Dash from "./components/dashboard/Dash";
 
 const App = () => {
@@ -20,7 +19,6 @@ const App = () => {
             <Route path="/sales" component={Sales} />
             <Route path="/reports" component={Reports} />
             <Route path="/purchase" component={Purchase} />
-            <Route path="/company" component={Company} />
             <Route path="/" component={Dash} />
           </Switch>
         </div>

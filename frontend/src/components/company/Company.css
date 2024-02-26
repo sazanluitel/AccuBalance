@@ -1,0 +1,44 @@
+.company_container {
+    height: 80vh;
+    width: 40vw;
+    margin: 3% 12%;
+  }
+  .company_container h2 {
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 3%;
+  }
+  
+  .company_container input {
+    padding: 8px;
+    font-size: 15px;
+    height: 40px;
+    width: 60%;
+    border: 1px solid rgb(209, 196, 196);
+    border-radius: 5px;
+  }
+  .name,
+  .address,
+  .password,
+  .confirm_password {
+    margin-top: 10px;
+  }
+  
+  .company-btn {
+    background-color: #008542;
+    height: 40px;
+    width: 60%;
+    margin-top: 25px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+  }
+  .company-btn input{
+    border: none;
+  }
+
+  .company-cancle-btn{
+    color: rgb(201, 19, 19);
+    margin-top: 20px;
+  }
+ 

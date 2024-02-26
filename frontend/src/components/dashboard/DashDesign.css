@@ -1,0 +1,33 @@
+.amount-section{
+    display: flex;
+    justify-content: space-between;
+    margin: 3% 12%;
+}
+.amtbox{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.amt-img{
+    font-size: 40px;
+}
+.amtbox h1{
+    color: var(--Grey-600, #4A5568);
+    font-size: 15px;
+    padding-bottom: -18px;
+}
+.amtbox h2{
+    color: var(--Grey-800, #1A202C);
+    font-size: 25px;
+}
+.total-img{
+    color: #4F539E;
+}
+
+.receivable-img{
+    color: #00994C;
+}
+
+.payable-img{
+    color: #F83F3F;
+}
