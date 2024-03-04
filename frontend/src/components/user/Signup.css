@@ -1,7 +1,7 @@
 .signup_container {
   height: 80vh;
   width: 40vw;
-  margin: 3% 12%;
+  margin: 2% 12%;
 }
 .signup_container h2 {
   font-weight: bold;
@@ -24,26 +24,28 @@
   margin-top: 10px;
 }
 
-.signup {
+.signup button{
   background-color: #008542;
   height: 40px;
   width: 60%;
   margin-top: 25px;
   text-align: center;
+  align-items: center;
   color: white;
   font-weight: bold;
-}
-.signup input{
   border: none;
 }
+
 
 .already_acc {
   font-size: small;
-  text-align: center;
+  margin: 12px 35px;
 }
 
-.already_acc input {
+.already_acc button {
   border: none;
   text-align: start;
   color: blue;
+  margin-left: 8px;
+
 }

@@ -1,15 +1,58 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa6";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import Modal from "../modals/Modal";
 import "./Sales.css";
 
-
-
 const Sales = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAddNew = () => {
+    setIsModalOpen(true);
+  };
+
+  const [salesData, setSalesData] = useState([]);
+
+  const handleCloseModal = async () => {
+    setIsModalOpen(false);
+    // Refetch sales data to update the table
+    try {
+      const response = await axios.get(
+        "http://127.0.0.1:8000/api/sales/sales-list/"
+      );
+      const newSalesData = response.data;
+      // Prepend the new purchase to the existing purchaseData array
+      setSalesData([...newSalesData, ...salesData]);
+    } catch (error) {
+      toast.error("Error fetching sales data:", error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8000/api/sales/sales-list/"
+        );
+        setSalesData(response.data);
+      } catch (error) {
+        toast.error("Error fetching sales data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className="sales-container">
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          endpoint="http://127.0.0.1:8000/api/sales/add_sales/"
+        />
         <div className="sales-add-btn">
-          <button id="sales-add-btn">
+          <button id="sales-add-btn" onClick={handleAddNew}>
             <FaPlus />
             Add New
           </button>
@@ -24,65 +67,33 @@ const Sales = () => {
                 <th>Quantiy</th>
                 <th>Price</th>
                 <th>Total Price</th>
-                <th>Amt Paid</th>
+                <th>Amt Received</th>
                 <th>Tax</th>
                 <th>Grand Total</th>
                 <th>Receivable amount</th>
               </tr>
             </thead>
-            <tr>
-              <td>1</td>
-              <td>Sujan Traders</td>
-              <td>Sunflower Oil</td>
-              <td>25</td>
-              <td>60</td>
-              <td>55</td>
-              <td>656</td>
-              <td>15</td>
-              <td>5145</td>
-              <td>515</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Sujan Traders</td>
-              <td>Sunflower Oil</td>
-              <td>25</td>
-              <td>60</td>
-              <td>55</td>
-              <td>656</td>
-              <td>15</td>
-              <td>5145</td>
-              <td>515</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Sujan Traders</td>
-              <td>Sunflower Oil</td>
-              <td>25</td>
-              <td>60</td>
-              <td>55</td>
-              <td>656</td>
-              <td>15</td>
-              <td>5145</td>
-              <td>515</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Sujan Traders</td>
-              <td>Sunflower Oil</td>
-              <td>25</td>
-              <td>60</td>
-              <td>55</td>
-              <td>656</td>
-              <td>15</td>
-              <td>5145</td>
-              <td>515</td>
-            </tr>
+            <tbody>
+              {salesData.map((sales, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{sales.customer}</td>
+                  <td>{sales.items_name}</td>
+                  <td>{sales.quantity}</td>
+                  <td>{sales.price}</td>
+                  <td>{sales.total_price}</td>
+                  <td>{sales.amt_received}</td>
+                  <td>{sales.tax}</td>
+                  <td>{sales.grand_total}</td>
+                  <td>{sales.receivable_amt}</td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default Sales;

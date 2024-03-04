@@ -1,10 +1,9 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
-import DashDesign from "./DashDesign";
 import './Dash.css'
 
-const Dash = () => {
+const Dash = ({children}) => {
   return (
     <>
       <div className="dash-container">
@@ -13,7 +12,7 @@ const Dash = () => {
         </div>
         <div className="navbar-container">
           <Navbar />
-          <DashDesign/>
+          {children}
         </div>
       </div>
     </>

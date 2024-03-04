@@ -31,7 +31,7 @@ const Company = () => {
       </div>
       <div className="company-btn">
         <input type="button" value="Register" />
-        <input className="company-cancle-btn" type="button" value="Cancle" />
+        <input className="company-cancle-btn" type="button" value="Cancel" />
       </div>
     </form>
   </div>

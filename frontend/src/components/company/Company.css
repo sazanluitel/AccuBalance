@@ -6,7 +6,7 @@
   .company_container h2 {
     font-weight: bold;
     font-size: 30px;
-    margin-top: 3%;
+    margin-top: 2%;
   }
   
   .company_container input {
@@ -17,11 +17,12 @@
     border: 1px solid rgb(209, 196, 196);
     border-radius: 5px;
   }
+
   .name,
   .address,
   .password,
   .confirm_password {
-    margin-top: 10px;
+    margin-top: 8px;
   }
   
   .company-btn {
@@ -39,6 +40,6 @@
 
   .company-cancle-btn{
     color: rgb(201, 19, 19);
-    margin-top: 20px;
+    margin-top: 10px;
   }
  
