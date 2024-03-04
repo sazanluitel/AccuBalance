@@ -10,7 +10,7 @@ class Sales(models.Model):
     tax = models.IntegerField()
     grand_total = models.IntegerField()
     receivable_amt = models.IntegerField()
-    profit_loss =models.IntegerField()
+    profit_loss =models.IntegerField(default=0)
 
     def __str__(self):
         return self.items_name

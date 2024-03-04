@@ -17,7 +17,7 @@ class SalesAddSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Sales
-        fields = ('customer', 'items_name', 'quantity', 'price', 'amt_received', 'tax', 'grand_total', 'receivable_amt','profit_loss')
+        fields = ('customer', 'items_name', 'quantity', 'price','total_price', 'amt_received', 'tax', 'grand_total', 'receivable_amt','profit_loss')
 
     def create(self, validated_data):
        
