@@ -95,8 +95,8 @@ DATABASES = {
         'NAME': 'accubalance',
         'USER': 'sajan',
         'PASSWORD': 'sajan',
-        'HOST': 'db',  
-        'PORT': '5432',      
+        'HOST': 'accubalance-db-1',  
+        'PORT': '5432',
     }
 }
 
