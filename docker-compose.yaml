@@ -3,12 +3,12 @@ version: '3'
 services:
 
   frontend:
-    image: schiz0/accubalance-frontend
+    image: schiz0/accubalance-frontend:1.0
     ports:
       - "3000:3000"
 
   backend:
-    image: schiz0/accubalance-backend
+    image: schiz0/accubalance-backend:1.0
     ports:
       - "8000:8000"
     depends_on:
