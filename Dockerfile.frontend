@@ -1,0 +1,23 @@
+# Use the official Node.js image as the base
+FROM node:16.20.2
+
+# Set the working directory
+WORKDIR /app/frontend
+
+# Copy package.json and package-lock.json
+COPY frontend/package*.json ./
+
+# Install the specific npm version
+RUN npm install -g npm@8.19.4
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY frontend/ .
+
+# Expose the port your React app runs on (e.g., 3000)
+EXPOSE 3000
+
+# Start the React app
+CMD ["npm", "start"]
