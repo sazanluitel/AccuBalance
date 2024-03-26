@@ -47,6 +47,19 @@ class PurchaseAddView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
+        
+class PurchaseStatsAPIView(APIView):
+    def get(self, request):
+        num_of_purchases = Purchase.num_of_purchases()
+        total_purchase_amount = Purchase.total_purchase_amount()
+        total_payable_amount = Purchase.total_payable_amount()
+
+        stats = {
+            "num_of_purchases": num_of_purchases,
+            "total_purchase_amount": total_purchase_amount,
+            "total_payable_amount": total_payable_amount,
+        }
+        return Response(stats, status=status.HTTP_200_OK)
 
 class PurchaseListView(ListAPIView):
     queryset = Purchase.objects.all()
