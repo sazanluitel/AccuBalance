@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { GiWallet } from "react-icons/gi";
-import './DashDesign.css'
+import { useHistory } from "react-router-dom";
+import "./DashDesign.css";
+import BarChart from "./BarGraphs";
+import PieChart from "./PieCharts";
+import { UserData } from "./ChartsData";
 
-const Dash_design = () => {
+const DashDesign = () => {
+  const history = useHistory();
+  
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      // Redirect to login page if access token is not present
+      history.push("/login");
+    }
+  }, [history]);
+
+  const [userData, setUserData] = useState({
+    labels: UserData.map((data) => data.year),
+    datasets: [
+      {
+        label: "Users Gained",
+        data: UserData.map((data) => data.userGain),
+        backgroundColor: [
+          "rgba(75,192,192,1)",
+          "#ecf0f1",
+          "#50AF95",
+          "#f3ba2f",
+          "#2a71d0",
+        ],
+        borderColor: "black",
+        borderWidth: 2,
+      },
+    ],
+  });
+  
   return (
     <>
       <div className="amount-section">
@@ -12,7 +45,7 @@ const Dash_design = () => {
             <GiWallet />
           </div>
           <div className="name-and-amt">
-            <h1>Total Amount</h1>
+            <h1>Total Tax</h1>
             <h2>5000</h2>
           </div>
         </div>
@@ -26,7 +59,7 @@ const Dash_design = () => {
             <h2>5000</h2>
           </div>
         </div>
-        {/* for amoount payable */}
+        {/* for amount payable */}
         <div className="amtbox">
           <div className="amt-img payable-img">
             <GiWallet />
@@ -38,10 +71,16 @@ const Dash_design = () => {
         </div>
       </div>
       <div className="charts-section">
-        
+        <div className="barchart" style={{ width: "45%" }}> 
+          <BarChart chartData={userData} />
+        </div>
+
+        <div className="piechart" style={{ width: "35%" }}> 
+          <PieChart chartData={userData} />
+        </div>
       </div>
     </>
   );
 };
 
-export default Dash_design;
+export default DashDesign;

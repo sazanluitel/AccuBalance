@@ -31,3 +31,12 @@
 .payable-img{
     color: #F83F3F;
 }
+.charts-section{
+    display: flex;
+    gap: 5%;
+    align-items: center;
+}
+
+.barchart{
+    margin: 13% 0 0 5%;
+}

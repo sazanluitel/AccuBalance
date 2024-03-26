@@ -21,7 +21,7 @@ const handleCloseModal = async () => {
     const response = await axios.get("http://127.0.0.1:8000/api/purchase/purchase-list/");
     const newPurchaseData = response.data;
     // Prepend the new purchase to the existing purchaseData array
-    setPurchaseData([...newPurchaseData, ...purchaseData]);
+    // setPurchaseData([...newPurchaseData, ...purchaseData]);
   } catch (error) {
     toast.error("Error fetching purchase data:", error);
   }

@@ -7,10 +7,11 @@ class Sales(models.Model):
     price = models.IntegerField()
     total_price = models.IntegerField(default=0)
     amt_received = models.IntegerField()
-    tax = models.IntegerField()
-    grand_total = models.IntegerField()
-    receivable_amt = models.IntegerField()
-    profit_loss =models.IntegerField(default=0)
+    tax = models.IntegerField(default = 0)
+    grand_total = models.IntegerField(default = 0)
+    receivable_amt = models.IntegerField(default =0)
+    total_receivable_amt = models.IntegerField(default = 0)
+    # profit_loss =models.IntegerField(default=0)
 
     def __str__(self):
         return self.items_name

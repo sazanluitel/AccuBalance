@@ -1,4 +1,5 @@
 import React from "react";
+import {Link, useHistory} from 'react-router-dom'
 import Headingimg from "../../assets/images/heading_img.png";
 import "./Sidebar.css";
 import { CiHome } from "react-icons/ci";
@@ -9,6 +10,15 @@ import { TbReportSearch } from "react-icons/tb";
 import { CiLogout } from "react-icons/ci";
 
 const Sidebar = () => {
+  const history = useHistory();
+  //handling the logout button
+  const handleLogout = ()  =>{
+    //removing tokens stored
+    localStorage.removeItem("accessToken")
+
+    //redirect to login
+    history.push("/login")
+  }
   return (
     <>
       <div className="sidebar">
@@ -20,41 +30,41 @@ const Sidebar = () => {
           <h1>Menus </h1>
           <ul>
             <li>
-              <a href="/">
+              <Link to="/">
                 <CiHome />
                 Dashboard
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/purchase">
+              <Link to="/purchase">
                 <BiPurchaseTagAlt />
                 Purchase
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/sales">
+              <Link to="/sales">
                 <TbCash />
                 Sales
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/stocks">
+              <Link to="/stocks">
                 <BiSolidCollection />
                 Stocks
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/reports">
+              <Link to="/reports">
                 <TbReportSearch />
                 Reports
-              </a>
+              </Link>
             </li>
           </ul>
-          <div className="logout">
-            <a href="/logout">
+          <div className="logout" onClick={handleLogout}>
+            <Link to="/logout">
               <CiLogout />
               Logout
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -37,8 +37,18 @@ const Login = () => {
         }),
       });
       if (response.ok) {
+        const data = await response.json();
+
+        //acessing the tokens
+        const accessToken = data.token.access;
+        const refreshToken = data.token.refresh;
+
+        //storing the token in local storage
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+        
         toast.success("Login successful");
-        // You may redirect the user to another page upon successful registration
+
         history.push("/"); // dashoard
       } else {
         const data = await response.json();

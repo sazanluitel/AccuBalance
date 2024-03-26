@@ -34,17 +34,19 @@ class SalesAddView(APIView):
         selling_price = sale_data["price"]
         
         # Calculate profit or loss
-        profit_or_loss = (selling_price - cost_price)*sale_data["quantity"]
+        # profit_or_loss = (selling_price - cost_price)*sale_data["quantity"]
 
         # Save the sale in Sales model
         Sales.objects.create(
             items_name=sale_data["items_name"],
             quantity=sale_data["quantity"],
             price=sale_data["price"],
-            profit_or_loss=profit_or_loss
+            amt_received=sale_data["amt_received"],  # Include amt_received field
+            # profit_or_loss=profit_or_loss
         )
 
         stock.save()
+
 
 class SalesListView(ListAPIView):
     queryset = Sales.objects.all()

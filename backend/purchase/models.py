@@ -9,7 +9,7 @@ class Purchase(models.Model):
     amt_paid = models.IntegerField()
     tax = models.IntegerField()
     grand_total = models.IntegerField()
-    payable_amt = models.IntegerField()
+    payable_amt = models.IntegerField(default =0)
 
     def __str__(self):
         return self.items_name
