@@ -3,16 +3,12 @@ version: '3'
 services:
 
   frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile.frontend
+    image: schiz0/accubalance-frontend:1.0
     ports:
       - "3000:3000"
 
   backend:
-    build:
-      context: .
-      dockerfile: Dockerfile.backend
+    image: schiz0/accubalance-backend:1.0
     ports:
       - "8000:8000"
     depends_on:
