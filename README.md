@@ -16,9 +16,19 @@ AccuBalance is a user-friendly accounting application designed to streamline fin
 
 1. **Installation**: To install AccuBalance using Docker, simply run the following command:
 ```bash
- curl https://raw.githubusercontent.com/Suhesh-Kasti/AccuBalance/main/docker-compose.yaml
+ curl https://raw.githubusercontent.com/Suhesh-Kasti/AccuBalance/main/docker-compose.yaml -o docker-compose.yaml
 
  docker-compose up -d
+```
+
+**From github source**: For development you might want to clone the repo and start working from there:
+```bash
+ git clone git@github.com:sazan991/AccuBalance.git
+ cd AccuBalance
+```
+After development you can ximply run the following docker command to start the backend and frontend:
+```bash
+ docker-compose -f accubalance.yaml up
 ```
 
 2. **Usage**:
