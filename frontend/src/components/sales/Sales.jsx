@@ -7,41 +7,39 @@ import "./Sales.css";
 
 const Sales = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [salesData, setSalesData] = useState([]);
 
   const handleAddNew = () => {
     setIsModalOpen(true);
   };
 
-  const [salesData, setSalesData] = useState([]);
-
   const handleCloseModal = async () => {
     setIsModalOpen(false);
-    // Refetch sales data to update the table
+  };
+
+  const fetchData = async () => {
     try {
       const response = await axios.get(
         "http://127.0.0.1:8000/api/sales/sales-list/"
       );
-      const newSalesData = response.data;
-      // Prepend the new purchase to the existing purchaseData array
-      setSalesData([...newSalesData, ...salesData]);
+      setSalesData(response.data);
+
+      //calling send-email url if for sending the url
+      await axios.get("http://127.0.0.1:8000/api/sales/email-sender/")
     } catch (error) {
-      toast.error("Error fetching sales data:", error);
+      toast.error("Error fetching purchase data:", error);
     }
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "http://127.0.0.1:8000/api/sales/sales-list/"
-        );
-        setSalesData(response.data);
-      } catch (error) {
-        toast.error("Error fetching sales data:", error);
-      }
-    };
     fetchData();
   }, []);
+
+  const handleModalSubmit = async () => {
+    // Fetch data only when the modal is closed by clicking the submit button
+    await fetchData();
+    handleCloseModal();
+  };
 
   return (
     <>
@@ -50,6 +48,7 @@ const Sales = () => {
           isOpen={isModalOpen}
           onClose={handleCloseModal}
           endpoint="http://127.0.0.1:8000/api/sales/add_sales/"
+          onSuccess={handleModalSubmit} // Pass handleModalSubmit as onSuccess prop
         />
         <div className="sales-add-btn">
           <button id="sales-add-btn" onClick={handleAddNew}>
@@ -90,6 +89,7 @@ const Sales = () => {
               ))}
             </tbody>
           </table>
+          <ToastContainer />
         </div>
       </div>
     </>
