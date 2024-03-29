@@ -1,18 +1,18 @@
 services:
   frontend:
-    image: schiz0/accubalance-frontend:latest   
+    image: schiz0/accubalance-frontend:latest
     ports:
       - "3000:3000"
 
   backend:
-    image: schiz0/accubalance-backend:latest    
+    image: schiz0/accubalance-backend:latest
     ports:
       - "8000:8000"
     depends_on:
       - db
     volumes:
       - ./backend:/backend
-    command: sh -c "sleep 30 && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: sh -c "sleep 30 && python /backend/manage.py makemigrations && python /backend/manage.py migrate && python /backend/manage.py runserver 0.0.0.0:8000"
     restart: on-failure
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -h db -p 5432 -q -U sajan"]
