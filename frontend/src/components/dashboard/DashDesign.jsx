@@ -5,10 +5,11 @@ import "./DashDesign.css";
 import BarChart from "./BarGraphs";
 import PieChart from "./PieCharts";
 import { UserData } from "./ChartsData";
+import axios from "axios";
 
 const DashDesign = () => {
   const history = useHistory();
-  
+
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
     if (!accessToken) {
@@ -16,6 +17,49 @@ const DashDesign = () => {
       history.push("/login");
     }
   }, [history]);
+
+  const [salesStats, setSalesStats] = useState({});
+  const [purchaseStats, setPurchaseStats] = useState({});
+
+  useEffect(() => {
+    //fetching the sales stats data
+    const fetchSalesData = async () => {
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8000/api/sales/stats/"
+        );
+        if (!response.data) {
+          throw new Error("Failed to fetch data");
+        }
+        setSalesStats(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    //fetching the purchase stats data
+    const fetchPurchaseData = async () => {
+      try {
+        const response = await axios.get(
+          "http://127.0.0.1:8000/api/purchase/purchase-stats/"
+        );
+        if (!response.data) {
+          throw new Error("Failed to fetch data");
+        }
+        setPurchaseStats(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchSalesData();
+    fetchPurchaseData();
+  }, []);
+
+  // Access the properties after they are guaranteed to be populated
+  const total_tax_amount = salesStats.total_tax_amount;
+  const total_receivable_amt = salesStats.total_receivable_amt;
+  const total_payable_amount = purchaseStats.total_payable_amount;
 
   const [userData, setUserData] = useState({
     labels: UserData.map((data) => data.year),
@@ -35,7 +79,7 @@ const DashDesign = () => {
       },
     ],
   });
-  
+
   return (
     <>
       <div className="amount-section">
@@ -46,7 +90,7 @@ const DashDesign = () => {
           </div>
           <div className="name-and-amt">
             <h1>Total Tax</h1>
-            <h2>5000</h2>
+            <h2> {total_tax_amount} </h2>
           </div>
         </div>
         {/* for amount receivable  */}
@@ -56,7 +100,7 @@ const DashDesign = () => {
           </div>
           <div className="name-and-amt">
             <h1>Amount Receivable</h1>
-            <h2>5000</h2>
+            <h2> {total_receivable_amt}</h2>
           </div>
         </div>
         {/* for amount payable */}
@@ -66,16 +110,15 @@ const DashDesign = () => {
           </div>
           <div className="name-and-amt">
             <h1>Amount Payable</h1>
-            <h2>5000</h2>
+            <h2> {total_payable_amount}</h2>
           </div>
         </div>
       </div>
       <div className="charts-section">
-        <div className="barchart" style={{ width: "45%" }}> 
+        <div className="barchart" style={{ width: 500 }}>
           <BarChart chartData={userData} />
         </div>
-
-        <div className="piechart" style={{ width: "35%" }}> 
+        <div className="piechart" style={{ width: 400 }}>
           <PieChart chartData={userData} />
         </div>
       </div>

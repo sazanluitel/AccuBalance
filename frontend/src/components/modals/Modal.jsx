@@ -1,34 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import "./Modal.css";
 import { useLocation } from "react-router-dom";
 
-const Modal = ({ isOpen, onClose, endpoint }) => {
+const Modal = ({ isOpen, onClose, endpoint, onSuccess }) => {
   const location = useLocation();
 
-  // Move getParticulars function declaration above its usage
   const getParticulars = () => {
     switch (location.pathname) {
       case "/purchase":
-        return ["Vendor", "Paid Amount", "Payable Amount", "vendor","amt_paid"];
+        return [
+          "Vendor",
+          "Paid Amount",
+          "Payable Amount",
+          "vendor",
+          "amt_paid",
+        ];
       case "/sales":
-        return ["Customer", "Received Amount", "Receivable Amount", "customer","amt_received"];
+        return [
+          "Customer",
+          "Received Amount",
+          "Receivable Amount",
+          "customer",
+          "amt_received",
+        ];
       default:
         return ["", ""];
     }
   };
 
-  const [firstPart, secondPart, thirdPart, fourthPart, fifthPart] = getParticulars();
+  const [firstPart, secondPart, thirdPart, fourthPart, fifthPart] =
+    getParticulars();
 
   const [formData, setFormData] = useState({
-    [fourthPart]:"",
+    [fourthPart]: "",
     items_name: "",
     quantity: "",
     price: "",
-    [fifthPart]:""
+    [fifthPart]: "",
   });
+
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    // Calculate total price when quantity or price changes
+    const calculateTotalPrice = () => {
+      const price = parseFloat(formData.price);
+      const quantity = parseFloat(formData.quantity);
+      const totalPrice = price * quantity * 1.13; // Applying 13% on the total
+      setTotalPrice(isNaN(totalPrice) ? 0 : totalPrice);
+    };
+    calculateTotalPrice();
+  }, [formData.price, formData.quantity]);
 
   const handleModalSubmit = async (e) => {
     e.preventDefault();
@@ -36,23 +61,31 @@ const Modal = ({ isOpen, onClose, endpoint }) => {
     try {
       const response = await axios.post(endpoint, formData);
       toast.success("Data posted Successfully");
+      onSuccess(); // Call onSuccess callback upon successful submission
       handleCloseModal();
     } catch (error) {
       console.error("Error posting data:", error);
     }
   };
 
-  if (!isOpen) return null;
-
   const handleCloseModal = () => {
+    // Clear form data and close modal
+    setFormData({
+      [fourthPart]: "",
+      items_name: "",
+      quantity: "",
+      price: "",
+      [fifthPart]: "",
+    });
     onClose();
   };
+
+  if (!isOpen) return null;
 
   return (
     <>
       <div id="modal-container" className="modal-container">
         <div className="modal-part">
-          {/* Use button element for the close button */}
           <button className="modal-close-btn" onClick={handleCloseModal}>
             <AiOutlineClose />
           </button>
@@ -128,12 +161,11 @@ const Modal = ({ isOpen, onClose, endpoint }) => {
               <div className="modal-submit-btn">
                 <button>Submit</button>
               </div>
-            <ToastContainer />
+              <ToastContainer />
             </form>
-            {/* <div className="modal-details">
-              <p>Total Price = formData.price *formData[fifthPart] </p>
-
-            </div> */}
+            <div className="modal-details">
+              <p>Total Price with 13% tax = {totalPrice.toFixed(2)}</p>
+            </div>
           </div>
         </div>
       </div>

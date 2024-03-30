@@ -1,7 +1,3 @@
-import React, { useState } from "react";
-import Login from "./Login";
-import Signup from "./Signup";
-import Company from "../company/Company";
 import Cash_img from "../../assets/images/cash.png";
 import "./User.css";
 

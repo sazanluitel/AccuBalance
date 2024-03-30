@@ -1,0 +1,37 @@
+.report{
+width: fit-content;
+margin: 2% 20%;  
+}
+.report-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.report-heading{
+    display: flex;
+    justify-content: end;
+    margin: 3%;
+}
+.print-btn button{
+    background: #008542;
+    font-size: 18px;
+    color: white;
+    padding: 7px 15px;
+    border-radius: 10px;
+}
+.report table{
+    justify-content: end;
+    border-collapse: collapse;
+    text-align: start;
+    font-size: 1em;
+    overflow: hidden;
+}
+.report-table th,
+.report-table td {
+  padding: 13px 12px;
+}
+.report-table thead tr {
+    background-color: #008542;
+    font-weight: bold;
+    color: white;
+  }
