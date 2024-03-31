@@ -27,7 +27,7 @@ const Sales = () => {
       //calling send-email url if for sending the url
       await axios.get("http://127.0.0.1:8000/api/sales/email-sender/")
     } catch (error) {
-      toast.error("Error fetching purchase data:", error);
+      toast.error("Error fetching purchase data: " + error.message);
     }
   };
 
