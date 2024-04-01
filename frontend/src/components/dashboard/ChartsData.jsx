@@ -1,32 +1,71 @@
-export const UserData = [
+export const UserBarData = [
+{
+id: 1,
+barfor: 'Total purchase',
+barvalue: 60000000,
+},
+{
+id: 2,
+barfor: 'Total sales',
+barvalue: 80000000,
+},
+{
+id: 3,
+barfor: 'Total Tax',
+barvalue: 1040000,
+},
+];
+
+export const UserPieData = [
   {
     id: 1,
-    year: 2016,
-    userGain: 80000,
-    userLost: 823,
+    model: 'iPhone 15 Pro',
+    stockLeft: 50,
   },
   {
     id: 2,
-    year: 2017,
-    userGain: 45677,
-    userLost: 345,
+    model: 'Samsung Galaxy S24 Ultra',
+    stockLeft: 75,
   },
   {
     id: 3,
-    year: 2018,
-    userGain: 78888,
-    userLost: 555,
+    model: 'OnePlus 11 Pro',
+    stockLeft: 40,
   },
   {
     id: 4,
-    year: 2019,
-    userGain: 90000,
-    userLost: 4555,
+    model: 'Google Pixel 8 Pro',
+    stockLeft: 60,
   },
   {
     id: 5,
-    year: 2020,
-    userGain: 4300,
-    userLost: 234,
+    model: 'Xiaomi Mi 13 Ultra',
+    stockLeft: 35,
   },
+  {
+    id: 6,
+    model: 'Oppo Find X6 Pro',
+    stockLeft: 45,
+  },
+  {
+    id: 7,
+    model: 'Vivo X90 Pro+',
+    stockLeft: 55,
+  },
+  {
+    id: 8,
+    model: 'Realme GT3',
+    stockLeft: 25,
+  },
+  {
+    id: 9,
+    model: 'Poco F5 Pro',
+    stockLeft: 50,
+  },
+  {
+    id: 10,
+    model: 'Redmi Note 12 Pro+',
+    stockLeft: 60,
+  },
+
 ];
